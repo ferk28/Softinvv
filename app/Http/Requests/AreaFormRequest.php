@@ -24,12 +24,13 @@ class AreaFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:4|max:70'
+            'name'=>'required|min:4|max:25'
         ];
     }
-    public function messages(){
+    public function messages(){ 
         return [
-            'name.required'=>'El campo area es obligatorio',
+            // 'name.required'=>'El campo area es obligatorio.',
+            // 'name.min'=>'El campo area debe contener al menos 4 caracteres.'
         ];
     }
 }
