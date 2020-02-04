@@ -146,6 +146,16 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'nombre',
+        'type' => 'tipo',
+        'trademark' => 'marca',
+        'so' => 'sistema operativo',
+        'serialnumber' => 'numero de serial',
+        'quality' => 'calidad',
+        'status' => 'estado',
+        'model' => 'modelo',
+        'data' => 'dato'
+    ],
 
 ];

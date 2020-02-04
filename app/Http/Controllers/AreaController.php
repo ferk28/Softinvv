@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Area;
+use Illuminate\Http\Request;
 use App\Http\Requests\AreaFormRequest;
 
 class AreaController extends Controller

@@ -44,11 +44,13 @@ class ProductController extends Controller
         $product->quality=$request->input('quality');
         $product->serialnumber=$request->input('serialnumber');
         $product->ram=$request->input('ram');
+        $product->data=$request->input('data');
         $product->so=$request->input('so');
         $product->status=$request->input('status');
         $product->description=$request->input('description');
         $product->save();
-        return $product->id;
+        dd($request->all());
+        // return $product->id;
     }
 
     /**

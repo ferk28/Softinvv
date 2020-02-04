@@ -147,7 +147,15 @@ return [
     */
 
     'attributes' => [
-        'name' => 'nombre',
+        'name' => 'name',
+        'type' => 'type',
+        'trademaker' => 'trademaker',
+        'so' => 'operative system',
+        'serialnumber' => 'serial number',
+        'quality' => 'quality',
+        'status' => 'status',
+        'data' => 'data',
+
     ],
 
 ];

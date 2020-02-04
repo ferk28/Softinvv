@@ -20,7 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('model');
             $table->string('quality');
             $table->string('serialnumber')->unique();
-            $table->string('ram');
+            $table->integer('ram');
+            $table->string('data');
             $table->string('so');
             $table->string('status');
             $table->text('description')->nulleable();
