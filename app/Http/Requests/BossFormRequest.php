@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AreaFormRequest extends FormRequest
+class BossFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,11 @@ class AreaFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:areas|min:4|max:25'
-        ];
-    }
-    public function messages(){ 
-        return [
-            // 'name.required'=>'El campo area es obligatorio.',
-            // 'name.min'=>'El campo area debe contener al menos 4 caracteres.'
+            'name'=>'required|min:3|max:50',
+            'controlnum'=>'required|unique:bosses|min:5|max:5',
+            'status'=>'required',
+            'extension'=>'required|unique:bosses|min:4|max:4',
+            'area_id'=>'required',
         ];
     }
 }

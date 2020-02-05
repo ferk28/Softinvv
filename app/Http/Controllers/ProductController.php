@@ -38,19 +38,20 @@ class ProductController extends Controller
     public function store(ProductFormRequest $request)
     {
         $product=new Product;
+        $product->serialnumber=$request->input('serialnumber');
         $product->type=$request->input('type'); 
         $product->trademark=$request->input('trademark');
         $product->model=$request->input('model');
-        $product->quality=$request->input('quality');
-        $product->serialnumber=$request->input('serialnumber');
         $product->ram=$request->input('ram');
-        $product->data=$request->input('data');
+        $product->dataram=$request->input('dataram');
+        $product->hdd=$request->input('hdd');
+        $product->datahdd=$request->input('datahdd');
         $product->so=$request->input('so');
         $product->status=$request->input('status');
         $product->description=$request->input('description');
         $product->save();
-        dd($request->all());
-        // return $product->id;
+        // dd($request->all());
+        return $product->id;
     }
 
     /**

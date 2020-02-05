@@ -155,7 +155,10 @@ return [
         'quality' => 'calidad',
         'status' => 'estado',
         'model' => 'modelo',
-        'data' => 'dato'
+        'data' => 'dato',
+        'controlnum' => 'numero de control',
+        'area_id' => 'area',
+        'boss_id'=> 'jefe de area'
     ],
 
 ];

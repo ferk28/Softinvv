@@ -24,15 +24,11 @@ class ProductFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'type'=>'required|min:3|max:25',
-            'trademarker'=>'required|min:3|max:15',
-            'so'=>'required',
-            'model'=>'required',
             'serialnumber'=>'required',
-            'quality'=>'required',
+            'type'=>'required|min:3|max:25',
+            'trademark'=>'required|min:3|max:15',
+            'model'=>'required',
             'status'=>'required',
-            'ram'=>'required|numeric|min:1|max:10',
-            'data' => 'required|string|max:2',
         ];
     }
     public function messages(){

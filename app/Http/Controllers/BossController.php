@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Boss;
+use App\Models\Area;
 use Illuminate\Http\Request;
+use App\Http\Requests\BossFormRequest;
 
 class BossController extends Controller
 {
@@ -24,7 +26,8 @@ class BossController extends Controller
      */
     public function create()
     {
-        return view('boss.create');
+        $areas = Area::all();
+        return view('boss.create', compact('areas'));
     }
 
     /**
@@ -33,7 +36,7 @@ class BossController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BossFormRequest $request)
     {
         $boss=new Boss;
         $boss->name=$request->input('name');
@@ -42,7 +45,7 @@ class BossController extends Controller
         $boss->extension=$request->input('extension');
         $boss->area_id=$request->input('area_id');
         $boss->save();
-        return $boss->id;
+        return redirect('boss/create')->with('message','El jefe de area ha sido agregado con exito');
         // dd($request->all());
     }
 

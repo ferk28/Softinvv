@@ -12,7 +12,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'type', 'trademark', 'model', 'quality', 'serialnumber', 'ram', 'data', 'so', 'status', 'description',
+        'serialnumber','type', 'trademark', 'so', 'model', 'status', 'ram', 'dataram', 'hdd', 'datahdd', 'description',
     ];
     public function safeguard()
     {

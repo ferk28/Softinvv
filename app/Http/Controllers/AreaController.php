@@ -40,7 +40,7 @@ class AreaController extends Controller
         $area=new Area;
         $area->name=$request->input('name');
         $area->save();
-        return $area->id;
+        return redirect('area/create')->with('message','El area ha sido agregada con exito');
     }
 
     /**

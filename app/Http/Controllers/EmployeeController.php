@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Boss;
 use Illuminate\Http\Request;
+use App\Http\Requests\EmployeeFormRequest;
 
 class EmployeeController extends Controller
 {
@@ -14,7 +16,6 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        $employee=Employee::all();
         return view('employee.index',compact('employee'));
     }
 
@@ -25,7 +26,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employee.create');
+        $bosses = Boss::all();
+        return view('employee.create',compact('bosses'));
     }
 
     /**
@@ -34,7 +36,7 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeFormRequest $request)
     {
         $employee=new Employee;
         $employee->name=$request->input('name'); 
@@ -42,7 +44,7 @@ class EmployeeController extends Controller
         $employee->status=$request->input('status');
         $employee->boss_id=$request->input('boss_id');
         $employee->save();
-        return $employee->id;
+        return redirect('employee/create')->with('message','El empleado ha sido agregado con exito');
         // dd($request->all());
     }
 
