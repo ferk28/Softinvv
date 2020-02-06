@@ -24,9 +24,9 @@ class ProductFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'serialnumber'=>'required',
-            'type'=>'required|min:3|max:25',
-            'trademark'=>'required|min:3|max:15',
+            'serialnumber'=>'required|unique:products',
+            'type'=>'required|min:1|max:25',
+            'trademark'=>'required|min:1|max:25',
             'model'=>'required',
             'status'=>'required',
         ];

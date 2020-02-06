@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Safeguard;
+use App\Models\Employee;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\SafeguardFormRequest;
+use Auth;
 
 class SafeguardController extends Controller
 {
@@ -13,9 +16,8 @@ class SafeguardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $safeguard=Safeguard::all();
         return view('safeguard.index',compact('safeguard'));
     }
 
@@ -26,7 +28,9 @@ class SafeguardController extends Controller
      */
     public function create()
     {
-        return view('safeguard.create');
+        $employees = Employee::all();
+        $products = Product::all();
+        return view('safeguard.create', compact('employees','products'));
     }
 
     /**
@@ -40,12 +44,11 @@ class SafeguardController extends Controller
         $safeguard=new Safeguard;
         $safeguard->folio=$request->input('folio');
         $safeguard->status=$request->input('status');
-        $safeguard->user_id=1;
+        $safeguard->user_id=Auth::user()->id;
         $safeguard->employee_id=$request->input('employee_id');
         $safeguard->product_id=$request->input('product_id');
         $safeguard->save();
-        return $safeguard->id;
-
+        return redirect('safeguard/create')->with('message','El resguardo se ha agregado con exito');
         // dd($request->all());
     }
 

@@ -3,8 +3,12 @@
 @section('content')
 {{-- send data --}}
 <form method="post" action="{{route('product.store')}}"> 
-    @csrf 
     {{-- input encrypted --}}
+    @csrf 
+    {{-- meessage success --}}
+    @if(session('message'))
+    <div class="alert alert-success">{{session('message')}}</div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Crear Producto</h4>

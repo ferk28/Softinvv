@@ -13,7 +13,7 @@ class SafeguardFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class SafeguardFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'folio'=>'required|unique:safeguards',
+            'status'=>'required',
+            'employee_id'=>'required',
+            'product_id' => 'required',
         ];
     }
 }

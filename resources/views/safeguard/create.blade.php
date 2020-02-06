@@ -3,44 +3,57 @@
 @section('content')
 {{-- send data --}}
 <form method="post" action="{{route('safeguard.store')}}"> 
-    @csrf
     {{-- input encrypted --}}
+    @csrf
+    {{-- message success --}}
+    @if(session('message'))
+    <div class="alert alert-success">{{session('message')}}</div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Crear resguardo</h4>
-            <form class="needs-validation" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="folio">Folio</label>
-                        <input type="text" class="form-control" name="folio" id="folio" placeholder="Folio" required>
-                        <div class="invalid-feedback">
-                            Folio number is required.
-                        </div>
+                        <input type="text" class="form-control  @if($errors->has('folio')) border-danger @endif" name="folio" id="folio" placeholder="Folio">
+                        <span class="text-danger"><small>{{$errors->first('folio')}}</small></span>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="status">Estado</label>
-                            <select class="custom-select d-block w-100" name="status" id="status" required>
-                                <option value="">Seleccionar...</option>
-                                <option>Alta</option>
-                                <option>Baja</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please provide a valid status.
-                            </div>
+                        <select class="custom-select d-block w-100  @if($errors->has('status')) border-danger @endif" name="status" id="status">
+                            <option value="">Seleccionar...</option>
+                            <option>Alta</option>
+                            <option>Baja</option>
+                        </select>
+                        <span class="text-danger"><small>{{$errors->first('status')}}</small></span>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="employee_id">Empleado <span class="text-muted">(Obligatorio)</span></label>
-                    <input type="text" class="form-control" name="employee_id" id="employee_id" placeholder="Empleado">
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label for="employee_id">Empleado</label>
+                        <select class="custom-select d-block w-100  @if($errors->has('employee_id')) border-danger @endif" name="employee_id" id="employee_id">
+                            <option value="">Seleccionar...</option>
+                            @foreach ($employees as $employee)
+                        <option value="{{ $employee['id']}}">{{$employee['name']}}</option>                                
+                            @endforeach
+                        </select>
+                        <span class="text-danger"><small>{{$errors->first('employee_id')}}</small></span>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="product_id">Producto <span class="text-muted">(Obligatorio)</span></label>
-                    <input type="text" class="form-control" name="product_id" id="product_id" placeholder="Producto">
-                    <small class="text-muted">Requiere numero de serie del producto</small>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label for="product_id">Producto</label>
+                        <select class="custom-select d-block w-100  @if($errors->has('product_id')) border-danger @endif" name="product_id" id="product_id">
+                            <option value="">Seleccionar...</option>
+                            @foreach ($products as $product)
+                        <option value="{{ $product['id']}}">{{ $product['serialnumber']}}\{{ $product['trademark']}}\{{ $product['model']}}</option>
+                            @endforeach
+                        </select>
+                        <span class="text-danger"><small>{{$errors->first('product_id')}}</small></span>
+                    </div>
                 </div>
                 <hr class="mb-4">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
-            </form>
         </div>
     </div>
 </form>

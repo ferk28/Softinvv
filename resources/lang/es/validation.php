@@ -158,7 +158,9 @@ return [
         'data' => 'dato',
         'controlnum' => 'numero de control',
         'area_id' => 'area',
-        'boss_id'=> 'jefe de area'
+        'boss_id'=> 'jefe de area',
+        'employee_id' => 'empleado',
+        'product_id' => 'producto',
     ],
 
 ];

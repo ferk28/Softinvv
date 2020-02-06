@@ -15,11 +15,9 @@ class CreateSafeguardsTable extends Migration
     {
         Schema::create('safeguards', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('folio')->array_unique();
+            $table->string('folio')->unique();
             $table->string('status');
             
-            $table->timestamps();
-
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
@@ -28,6 +26,8 @@ class CreateSafeguardsTable extends Migration
 
             $table->unsignedInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 

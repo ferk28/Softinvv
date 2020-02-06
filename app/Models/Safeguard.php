@@ -12,20 +12,18 @@ class Safeguard extends Model
      * @var array
      */
     protected $fillable = [
-        'folio', 'datacapturer_id', 'employee_id', 'product_id',
+        'folio', 'status', 'user_id', 'employee_id', 'product_id',
     ];
     public function employee()
     {
         return $this->belongsTo('App\Models\Employee');
-        
     }
     public function user()
     {
-        return $this->hasOne('App\Models\Datacapturer');
+        return $this->hasOne('App\User');
     }
     public function product()
     {
         return $this->hasOne('App\Models\Product');
-        
     }
 }

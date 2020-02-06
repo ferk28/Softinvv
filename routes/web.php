@@ -11,19 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes(['verify'=>'true']);
-Route::group(['verified'], function () {
-    Route::resource('area', 'AreaController')->middleware('language');
-    Route::resource('product', 'ProductController')->middleware('language');
-    Route::resource('employee', 'EmployeeController')->middleware('language');
-    Route::resource('boss', 'BossController')->middleware('language');
-    Route::resource('safeguard', 'SafeguardController')->middleware('language');
+Route::group(['middleware' => 'verified'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    
+    Route::resource('/area', 'AreaController')->middleware('language');
+    Route::resource('/product', 'ProductController')->middleware('language');
+    Route::resource('/employee', 'EmployeeController')->middleware('language');
+    Route::resource('/boss', 'BossController')->middleware('language');
+    Route::resource('/safeguard', 'SafeguardController')->middleware('language');
 });
-
- 

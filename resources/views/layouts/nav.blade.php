@@ -103,7 +103,7 @@
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Usuario actual:</div>
-                fernando2019 <!-- Logged by -->
+                Ferk <!-- Logged by -->
             </div>
         </nav>
     </div>

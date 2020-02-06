@@ -149,13 +149,18 @@ return [
     'attributes' => [
         'name' => 'name',
         'type' => 'type',
-        'trademaker' => 'trademaker',
+        'trademark' => 'trademark',
         'so' => 'operative system',
         'serialnumber' => 'serial number',
         'quality' => 'quality',
         'status' => 'status',
+        'model' => 'model',
         'data' => 'data',
-
+        'controlnum' => 'control number',
+        'area_id' => 'area',
+        'boss_id'=> 'boss',
+        'employee_id' => 'employee',
+        'product_id' => 'product',
     ],
 
 ];

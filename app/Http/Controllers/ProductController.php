@@ -15,7 +15,6 @@ class ProductController extends Controller
      */
     public function index() 
     {
-        $product=Product::all();
         return view('product.index',compact('products'));
     }
 
@@ -50,8 +49,8 @@ class ProductController extends Controller
         $product->status=$request->input('status');
         $product->description=$request->input('description');
         $product->save();
+        return redirect('product/create')->with('message','El producto ha sido agregado con exito');
         // dd($request->all());
-        return $product->id;
     }
 
     /**
