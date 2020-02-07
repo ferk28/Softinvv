@@ -24,7 +24,6 @@ class SafeguardFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'folio'=>'required|unique:safeguards',
             'status'=>'required',
             'employee_id'=>'required',
             'product_id' => 'required',

@@ -1,5 +1,5 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-<a class="navbar-brand" href="">SoftInvv</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+<a class="navbar-brand" href="{{route('home')}}">SoftInvv</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
     ><!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
@@ -16,7 +16,17 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">Cuenta</a><a class="dropdown-item" href="#">Actividad</a>
                 <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{route('home')}}">Salir</a>
+
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                 {{ __('Logout') }}
+             </a>
+             
+             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            {{-- <a class="dropdown-item" href="{{route('home')}}">Salir</a> --}}
             </div>
         </li>
     </ul>
@@ -27,7 +37,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Principal</div>
-                <a class="nav-link" href=""
+                <a class="nav-link" href="{{route('home')}}"
                         ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Inicio</a>
                     <div class="sb-sidenav-menu-heading">Navegacion</div>
@@ -102,8 +112,10 @@
                 </div>
             </div>
             <div class="sb-sidenav-footer">
-                <div class="small">Usuario actual:</div>
-                Ferk <!-- Logged by -->
+                <div class="small">Usuario actual:</div>                
+                <a>
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
             </div>
         </nav>
     </div>
@@ -121,7 +133,7 @@
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; fernando2019</div>
+                    <div class="text-muted">Copyright &copy; ferk28</div>
                     <div>
                         <a href="#">Politica de Privacidad</a>
                         &middot;

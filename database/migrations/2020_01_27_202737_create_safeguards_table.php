@@ -15,7 +15,6 @@ class CreateSafeguardsTable extends Migration
     {
         Schema::create('safeguards', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('folio')->unique();
             $table->string('status');
             
             $table->unsignedBigInteger('user_id');

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\SafeguardFormRequest;
 use Auth;
 
+
 class SafeguardController extends Controller
 {
     /**
@@ -42,7 +43,6 @@ class SafeguardController extends Controller
     public function store(SafeguardFormRequest $request)
     {
         $safeguard=new Safeguard;
-        $safeguard->folio=$request->input('folio');
         $safeguard->status=$request->input('status');
         $safeguard->user_id=Auth::user()->id;
         $safeguard->employee_id=$request->input('employee_id');

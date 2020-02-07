@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Crear Jefe de Area</h4>
-                <div class="mb-3">
+            <div class="mb-3">
                     <label for="name">Nombre del jefe de area</label>
                     <input type="text" class="form-control @if($errors->has('name')) border-danger @endif" name="name" id="name" value="{{old('name')}}" placeholder="Nombre jefe">
                     <span class="text-danger"><small>{{$errors->first('name')}}</small></span>
@@ -29,12 +29,12 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="controlnum">Numero de control</label>
-                        <input type="number" class="form-control @if($errors->has('controlnum')) border-danger @endif" name="controlnum" id="controlnum" value="{{old('controlnum')}}" placeholder="Control">
+                        <input type="number" class="form-control @if($errors->has('controlnum')) border-danger @endif" name="controlnum" id="controlnum" value="{{old('controlnum')}}" placeholder="5 caracteres">
                         <span class="text-danger"><small>{{$errors->first('controlnum')}}</small></span>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="extension">Numero de extension</label>
-                        <input type="number" class="form-control @if($errors->has('extension')) border-danger @endif" name="extension" id="extension" value="{{old('extension')}}" placeholder="Extension">
+                        <input type="number" class="form-control @if($errors->has('extension')) border-danger @endif" name="extension" id="extension" value="{{old('extension')}}" placeholder="4 caracteres">
                         <span class="text-danger"><small>{{$errors->first('extension')}}</small></span>
                     </div>
                 </div>

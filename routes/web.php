@@ -12,11 +12,12 @@
 */
 
 Auth::routes(['verify'=>'true']);
-Route::group(['middleware' => 'verified'], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::resource('/area', 'AreaController')->middleware('language');
-    Route::resource('/product', 'ProductController')->middleware('language');
-    Route::resource('/employee', 'EmployeeController')->middleware('language');
-    Route::resource('/boss', 'BossController')->middleware('language');
-    Route::resource('/safeguard', 'SafeguardController')->middleware('language');
+Route::group(['middleware' => ['verified']], function () {
+    Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
+    Route::resource('/area', 'AreaController')->middleware('auth','language');
+    Route::resource('/product', 'ProductController')->middleware('auth','language');
+    Route::resource('/employee', 'EmployeeController')->middleware('auth','language');
+    Route::resource('/boss', 'BossController')->middleware('auth','language');
+    Route::resource('/safeguard', 'SafeguardController')->middleware('auth','language');
+    
 });

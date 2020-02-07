@@ -13,11 +13,11 @@
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Crear resguardo</h4>
                 <div class="row">
-                    <div class="col-md-6 mb-3">
+                    {{-- <div class="col-md-6 mb-3">
                         <label for="folio">Folio</label>
                         <input type="text" class="form-control  @if($errors->has('folio')) border-danger @endif" name="folio" id="folio" placeholder="Folio">
                         <span class="text-danger"><small>{{$errors->first('folio')}}</small></span>
-                    </div>
+                    </div> --}}
                     <div class="col-md-6 mb-3">
                         <label for="status">Estado</label>
                         <select class="custom-select d-block w-100  @if($errors->has('status')) border-danger @endif" name="status" id="status">
