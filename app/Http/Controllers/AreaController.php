@@ -15,7 +15,6 @@ class AreaController extends Controller
      */
     public function index()
     {
-        $areas=Area::all();
         return view('area.index',compact('areas'));
     }
 
@@ -60,9 +59,9 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Area $area)
     {
-        //
+        return view('area.edit',compact('area'));
     }
 
     /**
@@ -72,19 +71,24 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AreaFormRequest $request, Area $area)
     {
-        //
+        $area->name=$request->input('name');
+        $area->save();
+        return redirect()
+            ->route('area.index', ['area' => $area])
+            ->with('message','El area de ha sido actualizada con exito');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $id`
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Area $area)
     {
-        //
+        $area->delete();
+        return redirect()->route('area.index');
     }
 }

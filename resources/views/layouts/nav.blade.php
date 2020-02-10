@@ -64,7 +64,7 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                             ></a>
                             <div class="collapse" id="pagesCollapseArea" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('area.create')}}">Crear</a><a class="nav-link" href="#">Consultar</a></nav>
+                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('area.create')}}">Crear</a><a class="nav-link" href="{{route('area.index')}}">Consultar</a></nav>
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseBoss" aria-expanded="false" aria-controls="pagesCollapseBoss"

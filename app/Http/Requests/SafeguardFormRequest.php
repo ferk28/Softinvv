@@ -26,7 +26,7 @@ class SafeguardFormRequest extends FormRequest
         return [
             'status'=>'required',
             'employee_id'=>'required',
-            'product_id' => 'required',
+            'product_id' => 'required|unique:safeguards',
         ];
     }
 }
