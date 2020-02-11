@@ -21,6 +21,7 @@
             </div>
             <hr class="mb-4">
             <button type="submit" class="btn btn-primary btn-lg btn-block">Editar</button>
+            <a class="btn btn-secondary btn-block" href="javascript:history.back()">Volver atras</a>
         </div>
     </div>
 </form>

@@ -15,6 +15,7 @@ class AreaController extends Controller
      */
     public function index()
     {
+        $areas = Area::all();
         return view('area.index',compact('areas'));
     }
 
@@ -83,12 +84,14 @@ class AreaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id`
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Area $area)
-    {
+    public function destroy(Area $area) 
+    { 
         $area->delete();
-        return redirect()->route('area.index');
+        return redirect()
+        ->route('area.index')
+        ->with('message','El registro ha sido borrado de la base de datos con exito');
     }
 }
