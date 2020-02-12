@@ -12,6 +12,6 @@ class BossesTableSeeder extends Seeder
      */
     public function run()
     {
-        Boss::create(["name"=>"Salvador Ramos","controlnum"=>"12345","status"=>"Alta","extension"=>"5751","area_id"=>"1"]);
+        Boss::create(["name_boss"=>"Salvador Ramos","controlnum"=>"12345","status"=>"Alta","extension"=>"5751","area_id"=>"1"]);
     }
 }

@@ -15,10 +15,10 @@ class CreateBossesTable extends Migration
     {
         Schema::create('bosses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('controlnum')->unique();
+            $table->string('name_boss');
+            $table->integer('controlnum');
             $table->string('status');
-            $table->integer('extension')->unique();
+            $table->integer('extension');
 
             $table->unsignedInteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');

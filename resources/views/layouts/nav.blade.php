@@ -72,7 +72,7 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                             ></a>
                             <div class="collapse" id="pagesCollapseBoss" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('boss.create')}}">Crear</a><a class="nav-link" href="#">Consultar</a></nav>
+                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('boss.create')}}">Crear</a><a class="nav-link" href="{{ route('boss.index')}}">Consultar</a></nav>
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseEmployee" aria-expanded="false" aria-controls="pagesCollapseEmployee"
@@ -80,7 +80,7 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                             ></a>
                             <div class="collapse" id="pagesCollapseEmployee" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('employee.create')}}">Crear</a><a class="nav-link" href="#">Consultar</a></nav>
+                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('employee.create')}}">Crear</a><a class="nav-link" href="{{ route('employee.index')}}">Consultar</a></nav>
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseProduct" aria-expanded="false" aria-controls="pagesCollapseProduct"
@@ -88,7 +88,7 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                             ></a>
                             <div class="collapse" id="pagesCollapseProduct" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('product.create')}}">Crear</a><a class="nav-link" href="#">Consultar</a></nav>
+                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('product.create')}}">Crear</a><a class="nav-link" href="{{ route('product.index')}}">Consultar</a></nav>
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseSafeguard" aria-expanded="false" aria-controls="pagesCollapseSafeguard"
@@ -96,7 +96,7 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                             ></a>
                             <div class="collapse" id="pagesCollapseSafeguard" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('safeguard.create')}}">Crear</a><a class="nav-link" href="#">Consultar</a></nav>
+                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('safeguard.create')}}">Crear</a><a class="nav-link" href="{{ route('safeguard.index')}}">Consultar</a></nav>
                             </div>
                             
                         </nav>

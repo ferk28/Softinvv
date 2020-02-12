@@ -24,10 +24,10 @@ class BossFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:3|max:50',
-            'controlnum'=>'required|unique:bosses|min:5|max:5',
+            'name_boss'=>'required|min:3|max:50',
+            'controlnum'=>'required|min:5|max:5',
             'status'=>'required',
-            'extension'=>'required|unique:bosses|min:4|max:4',
+            'extension'=>'required|min:4|max:4',
             'area_id'=>'required',
         ];
     }

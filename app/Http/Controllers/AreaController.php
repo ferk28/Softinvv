@@ -38,9 +38,9 @@ class AreaController extends Controller
     public function store(AreaFormRequest $request)
     {
         $area=new Area;
-        $area->name=$request->input('name');
+        $area->name_area=$request->input('name_area');
         $area->save();
-        return redirect('area/create')->with('message','El area ha sido agregada con exito');
+        return redirect('area')->with('message','El area ha sido agregada con exito');
     }
 
     /**
@@ -74,7 +74,7 @@ class AreaController extends Controller
      */
     public function update(AreaFormRequest $request, Area $area)
     {
-        $area->name=$request->input('name');
+        $area->name_area=$request->input('name_area');
         $area->save();
         return redirect()
             ->route('area.index', ['area' => $area])
@@ -92,6 +92,6 @@ class AreaController extends Controller
         $area->delete();
         return redirect()
         ->route('area.index')
-        ->with('message','El registro ha sido borrado de la base de datos con exito');
+        ->with('message-error','El registro ha sido borrado de la base de datos con exito');
     }
 }

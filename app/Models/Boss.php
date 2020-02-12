@@ -12,7 +12,7 @@ class Boss extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'controlnum', 'status', 'extension', 'area_id',
+        'name_boss', 'controlnum', 'status', 'extension', 'area_id',
     ];
     public function area()
     {

@@ -6,6 +6,7 @@ use App\Models\Boss;
 use App\Models\Area;
 use Illuminate\Http\Request;
 use App\Http\Requests\BossFormRequest;
+use Illuminate\Support\Facades\DB;
 
 class BossController extends Controller
 {
@@ -14,14 +15,20 @@ class BossController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        return view('boss.index',compact('boss'));
+        $bosses = DB::table('areas')
+                ->select("bosses.id","bosses.name_boss","bosses.controlnum","bosses.status","bosses.extension","areas.name_area")
+                ->join("bosses","areas.id","=","bosses.area_id")
+                ->get();
+        return view('boss.index',compact('bosses')); 
+                // echo "<pre>";
+                // print_r($name_boss);
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -36,16 +43,16 @@ class BossController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BossFormRequest $request)
+    public function store(BossFormRequest $request, Boss $boss)
     {
         $boss=new Boss;
-        $boss->name=$request->input('name');
+        $boss->name_boss=$request->input('name_boss');
         $boss->controlnum=$request->input('controlnum');
         $boss->status=$request->input('status');
         $boss->extension=$request->input('extension');
         $boss->area_id=$request->input('area_id');
         $boss->save();
-        return redirect('boss/create')->with('message','El jefe de area ha sido agregado con exito');
+        return redirect('boss')->with('message','El jefe de area ha sido agregado con exito');
         // dd($request->all());
     }
 
@@ -66,9 +73,10 @@ class BossController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Boss $boss)
     {
-        //
+        $areas = Area::all();
+        return view('boss.edit',compact('boss','areas'));
     }
 
     /**
@@ -78,9 +86,18 @@ class BossController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BossFormRequest $request, Boss $boss)
     {
-        //
+        $boss->name_boss=$request->input('name_boss');
+        $boss->controlnum=$request->input('controlnum');
+        $boss->status=$request->input('status');
+        $boss->extension=$request->input('extension');
+        $boss->area_id=$request->input('area_id');
+        $boss->save();
+        return redirect()
+        ->route('boss.index',['boss'=>$boss])
+        ->with('message','El jefe de area ha sido actualizado con exito');
+
     }
 
     /**
@@ -89,8 +106,11 @@ class BossController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Boss $boss)
     {
-        //
+        $boss->delete();
+        return redirect()
+        ->route('boss.index')
+        ->with('message-error','El registro ha sido borrado de la base de datos con exito');
     }
 }

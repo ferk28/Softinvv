@@ -161,6 +161,8 @@ return [
         'boss_id'=> 'jefe de area',
         'employee_id' => 'empleado',
         'product_id' => 'producto',
+        'name_area' => 'nombre area',
+        'name_boss' => 'nombre jefe'
     ],
 
 ];
