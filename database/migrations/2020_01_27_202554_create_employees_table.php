@@ -15,8 +15,8 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('controlnum')->unique();
+            $table->string('name_employee');
+            $table->integer('controlnum');
             $table->string('status');
 
             $table->unsignedInteger('boss_id');

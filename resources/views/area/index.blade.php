@@ -3,7 +3,7 @@
 @section('content')
     <script>
         $(document).ready(function() {
-            $('#area').DataTable();
+            $('#areas').DataTable();
         });
     </script>
     {{-- meessage --}}
@@ -15,7 +15,7 @@
     @endif
     {{-- end meessage --}}
 
-<table id="area" class="table table-striped table-bordered" style="width:100%">
+<table id="areas" class="table table-striped table-bordered" style="width:100%">
     <thead>
         <tr>
             <th>Nombre</th>
@@ -23,11 +23,11 @@
         </tr>
     </thead>  
     <tbody>
-        @foreach($areas as $area)
+        @foreach($area as $areas)
             <tr>
-                <td>{{ $area->name_area }}</td>
+                <td>{{ $areas->name_area }}</td>
                 <td width=12%>       
-                    <a class="btn btn-primary" href="{{ route('area.edit', $area) }}"><i class="fa fa-edit"></i></a>
+                    <a class="btn btn-primary" href="{{ route('area.edit', $areas) }}"><i class="fa fa-edit"></i></a>
                     <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#btn_delete"><i class="fa fa-trash-alt"></i></button>
                 </td>
             </tr>
@@ -51,7 +51,7 @@
             ¿Estás seguro que desea realizarla?
         </div>
         <div class="modal-footer">
-            <form action="{{ route('area.destroy',$areas->id) }}" method="POST">
+            <form action="{{ route('area.destroy',$areas) }}" method="POST">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">No estoy seguro</button>
                 @csrf
                 @method('DELETE')

@@ -12,15 +12,10 @@ class Employee extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'controlnum', 'status', 'boss_id',
+        'name_employee', 'controlnum', 'status', 'boss_id',
     ];
-    public function bosses()
+    public function boss()
     {
-        return $this->belongsTo('App\Models\Boss');
+        return $this->belongsTo(Boss::class);
     }
-    public function safeguards()
-    {
-        return $this->HasMany('App\Models\Safeguard');
-    }
-    
 }

@@ -6,6 +6,7 @@ use App\Models\Employee;
 use App\Models\Boss;
 use Illuminate\Http\Request;
 use App\Http\Requests\EmployeeFormRequest;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -14,8 +15,9 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+        $employee = Employee::with('boss')->get();//pasa variables a la tabla con id
         return view('employee.index',compact('employee'));
     }
 
@@ -26,8 +28,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $bosses = Boss::all();
-        return view('employee.create',compact('bosses'));
+        $boss = Boss::all();
+        return view('employee.create',compact('boss'));
     }
 
     /**
@@ -39,12 +41,12 @@ class EmployeeController extends Controller
     public function store(EmployeeFormRequest $request)
     {
         $employee=new Employee;
-        $employee->name=$request->input('name'); 
+        $employee->name_employee=$request->input('name_employee'); 
         $employee->controlnum=$request->input('controlnum');
         $employee->status=$request->input('status');
         $employee->boss_id=$request->input('boss_id');
         $employee->save();
-        return redirect('employee/create')->with('message','El empleado ha sido agregado con exito');
+        return redirect('employee')->with('message','El empleado ha sido agregado con exito');
         // dd($request->all());
     }
 
@@ -65,9 +67,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Employee $employee)
     {
-        //
+        $bosses = Boss::all();
+        return view('employee.edit',compact('employee','bosses'));
     }
 
     /**
@@ -77,9 +80,16 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmployeeFormRequest $request, Employee $employee)
     {
-        //
+        $employee->name_employee=$request->input('name_employee'); 
+        $employee->controlnum=$request->input('controlnum');
+        $employee->status=$request->input('status');
+        $employee->boss_id=$request->input('boss_id');
+        $employee->save();
+        return redirect()
+        ->route('employee.index',['employee'=>$employee])
+        ->with('message','El empleado ha sido actualizado con exito');
     }
 
     /**
@@ -88,8 +98,11 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect()
+        ->route('employee.index')
+        ->with('message-error','El registro ha sido borrado de la base de datos con exito');
     }
 }

@@ -24,9 +24,9 @@ class EmployeeFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:3|max:50',
+            'name_employee'=>'required|min:3|max:50',
             'status'=>'required',
-            'controlnum'=>'required|unique:employees|min:5|max:5',
+            'controlnum'=>'required|min:5|max:5',
             'boss_id'=>'required',
         ];
     }

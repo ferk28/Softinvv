@@ -12,6 +12,6 @@ class EmployeesTableSeeder extends Seeder
      */
     public function run()
     {
-        Employee::create(["name"=>"Fernando","controlnum"=>"12345","status"=>"Alta","boss_id"=>"1"]);
+        Employee::create(["name_employee"=>"Fernando","controlnum"=>"12345","status"=>"Alta","boss_id"=>"1"]);
     }
 }

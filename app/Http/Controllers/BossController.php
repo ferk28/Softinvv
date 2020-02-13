@@ -17,13 +17,9 @@ class BossController extends Controller
      */
     public function index()
     {
-        $bosses = DB::table('areas')
-                ->select("bosses.id","bosses.name_boss","bosses.controlnum","bosses.status","bosses.extension","areas.name_area")
-                ->join("bosses","areas.id","=","bosses.area_id")
-                ->get();
-        return view('boss.index',compact('bosses')); 
-                // echo "<pre>";
-                // print_r($name_boss);
+        $boss = Boss::with('area')->get();//pasa variables con id a la tabla y nombre
+        return view('boss.index',compact('boss')); 
+
     }
 
     /**
@@ -33,8 +29,8 @@ class BossController extends Controller
      */
     public function create()
     {
-        $areas = Area::all();
-        return view('boss.create', compact('areas'));
+        $area = Area::all();
+        return view('boss.create', compact('area'));
     }
 
     /**

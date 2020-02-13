@@ -16,10 +16,6 @@ class Boss extends Model
     ];
     public function area()
     {
-        return $this->HasOne('App\Models\Area');
+        return $this->belongsTo(Area::class);
     }
-    public function employees()
-    {
-        return $this->HasMany('App\Models\Employee');
-    } 
 }

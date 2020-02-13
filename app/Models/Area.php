@@ -15,8 +15,4 @@ class Area extends Model
         'name_area',
     ];
     // Relations one-Many etc
-    public function boss()
-    {
-        return $this->belongsTo('App\Models\Boss');
-    }
 }

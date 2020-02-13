@@ -15,7 +15,8 @@ class ProductController extends Controller
      */
     public function index() 
     {
-        return view('product.index',compact('products'));
+        $product = Product::all();
+        return view('product.index',compact('product'));
     }
 
     /**
@@ -49,7 +50,7 @@ class ProductController extends Controller
         $product->status=$request->input('status');
         $product->description=$request->input('description');
         $product->save();
-        return redirect('product/create')->with('message','El producto ha sido agregado con exito');
+        return redirect('product')->with('message','El producto ha sido agregado con exito');
         // dd($request->all());
     }
 
@@ -70,9 +71,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('product.edit',compact('product'));
     }
 
     /**
@@ -82,9 +83,23 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductFormRequest $request, Product $product)
     {
-        //
+        $product->serialnumber=$request->input('serialnumber');
+        $product->type=$request->input('type'); 
+        $product->trademark=$request->input('trademark');
+        $product->model=$request->input('model');
+        $product->ram=$request->input('ram');
+        $product->dataram=$request->input('dataram');
+        $product->hdd=$request->input('hdd');
+        $product->datahdd=$request->input('datahdd');
+        $product->so=$request->input('so');
+        $product->status=$request->input('status');
+        $product->description=$request->input('description');
+        $product->save();
+        return redirect()
+        ->route('product.index',['product'=>$product])
+        ->with('message','El producto ha sido actualizado con exito');
     }
 
     /**
@@ -93,8 +108,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()
+        ->route('product.index')
+        ->with('message-error','El registro ha sido borrado de la base de datos con exito');
     }
 }
