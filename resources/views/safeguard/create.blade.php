@@ -33,8 +33,8 @@
                         <label for="employee_id">Empleado</label>
                         <select class="custom-select d-block w-100  @if($errors->has('employee_id')) border-danger @endif" name="employee_id" id="employee_id">
                             <option value="">Seleccionar...</option>
-                            @foreach ($employees as $employee)
-                        <option value="{{ $employee['id']}}">{{$employee['name']}}</option>                                
+                            @foreach ($employee as $employee)
+                        <option value="{{ $employee['id']}}">{{$employee['name_employee']}}</option>                                
                             @endforeach
                         </select>
                         <span class="text-danger"><small>{{$errors->first('employee_id')}}</small></span>
@@ -45,7 +45,7 @@
                         <label for="product_id">Producto</label>
                         <select class="custom-select d-block w-100  @if($errors->has('product_id')) border-danger @endif" name="product_id" id="product_id">
                             <option value="">Seleccionar...</option>
-                            @foreach ($products as $product)
+                            @foreach ($product as $product)
                         <option value="{{ $product['id']}}">{{ $product['serialnumber']}}\{{ $product['trademark']}}\{{ $product['model']}}</option>
                             @endforeach
                         </select>

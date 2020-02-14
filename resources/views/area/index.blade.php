@@ -1,20 +1,19 @@
 @extends('layouts.main')
 @section('title', 'Area')
 @section('content')
-    <script>
-        $(document).ready(function() {
-            $('#areas').DataTable();
-        });
-    </script>
-    {{-- meessage --}}
-    @if(session('message'))
-        <div class="alert alert-success">{{session('message')}}</div>
-    @endif
-    @if(session('message-error'))
-        <div class="alert alert-danger">{{session('message-error')}}</div>
-    @endif
-    {{-- end meessage --}}
-
+<script>
+    $(document).ready(function() {
+        $('#areas').DataTable();
+    });
+</script>
+{{-- meessage --}}
+@if(session('message'))
+    <div class="alert alert-success">{{session('message')}}</div>
+@endif
+@if(session('message-error'))
+    <div class="alert alert-danger">{{session('message-error')}}</div>
+@endif
+{{-- end meessage --}}
 <table id="areas" class="table table-striped table-bordered" style="width:100%">
     <thead>
         <tr>
@@ -23,42 +22,16 @@
         </tr>
     </thead>  
     <tbody>
-        @foreach($area as $areas)
+        @foreach($area as $area)
             <tr>
-                <td>{{ $areas->name_area }}</td>
+                <td>{{ $area->name_area }}</td>
                 <td width=12%>       
-                    <a class="btn btn-primary" href="{{ route('area.edit', $areas) }}"><i class="fa fa-edit"></i></a>
-                    <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#btn_delete"><i class="fa fa-trash-alt"></i></button>
+                    <a href="{{ route('area.edit',['area'=>$area->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                    <a href="" data-target="#btn-delete-{{$area->id}}" data-toggle="modal" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
                 </td>
             </tr>
+            @include('area.destroy')
         @endforeach
     </tbody>
 </table>
-
-
-{{-- Start Modal --}}
-<div class="modal fade" data-target-color="red" id="btn_delete" tabindex="-1" role="dialog" aria-labelledby="btn_delete" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="">Mensaje de alerta...</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            Al realizar esta acción no podrás recuperar estos datos. 
-            ¿Estás seguro que desea realizarla?
-        </div>
-        <div class="modal-footer">
-            <form action="{{ route('area.destroy',$areas) }}" method="POST">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">No estoy seguro</button>
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Si, eliminar</button>
-            </form>
-        </div>
-      </div>
-    </div>
-  </div>
 @endsection

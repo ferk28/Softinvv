@@ -19,5 +19,5 @@ Route::group(['middleware' => ['verified']], function () {
     Route::resource('/employee', 'EmployeeController')->middleware('auth','language');
     Route::resource('/boss', 'BossController')->middleware('auth','language');
     Route::resource('/safeguard', 'SafeguardController')->middleware('auth','language');
-    
+    Route::get('/pdf', 'SafeguardController@exportarPdf')->name('pdf')->middleware('auth');
 });

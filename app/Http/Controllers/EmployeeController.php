@@ -17,7 +17,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employee = Employee::with('boss')->get();//pasa variables a la tabla con id
+        $employee = Employee::with('boss')->get();//pasa variables del modelo a la tabla con id
         return view('employee.index',compact('employee'));
     }
 

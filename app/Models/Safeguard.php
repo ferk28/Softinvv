@@ -17,14 +17,14 @@ class Safeguard extends Model
     
     public function employee()
     {
-        return $this->belongsTo('App\Models\Employee');
+        return $this->belongsTo(Employee::class);
     }
     public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsTo(User::class);
     }
     public function product()
     {
-        return $this->hasOne('App\Models\Product');
+        return $this->belongsTo(Product::class);
     }
 }

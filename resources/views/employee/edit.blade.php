@@ -42,7 +42,8 @@
                                 <option value="{{ $boss['id']}}">{{ $boss['name_boss']}}</option>
                             @endforeach
                         </select>
-                        <span class="text-danger"><small>{{$errors->first('boss_id')}}</small></span>                    </div>
+                        <span class="text-danger"><small>{{$errors->first('boss_id')}}</small></span>                    
+                    </div>
                 </div>
                 <hr class="mb-4">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>

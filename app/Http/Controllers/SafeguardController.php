@@ -7,6 +7,9 @@ use App\Models\Employee;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\SafeguardFormRequest;
+use App\Http\Requests\SafeguardEditFormRequest;
+use Barryvdh\DomPDF\Facade as PDF;
+
 use Auth;
 
 
@@ -17,8 +20,9 @@ class SafeguardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+        $safeguard = Safeguard::with('product')->get();//pasa variables del modelo a la tabla con id
         return view('safeguard.index',compact('safeguard'));
     }
 
@@ -29,9 +33,9 @@ class SafeguardController extends Controller
      */
     public function create()
     {
-        $employees = Employee::all();
-        $products = Product::all();
-        return view('safeguard.create', compact('employees','products'));
+        $employee = Employee::all();
+        $product = Product::all();
+        return view('safeguard.create', compact('employee','product'));
     }
 
     /**
@@ -48,7 +52,7 @@ class SafeguardController extends Controller
         $safeguard->employee_id=$request->input('employee_id');
         $safeguard->product_id=$request->input('product_id');
         $safeguard->save();
-        return redirect('safeguard/create')->with('message','El resguardo se ha agregado con exito');
+        return redirect('safeguard')->with('message','El resguardo se ha agregado con exito');
         // dd($request->all());
     }
 
@@ -69,9 +73,11 @@ class SafeguardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Safeguard $safeguard)
     {
-        //
+        $employee = Employee::all(); //pasa lo parametros para rellenar los datos
+        $product = Product::all();
+        return view('safeguard.edit',compact('safeguard','employee','product'));
     }
 
     /**
@@ -81,9 +87,17 @@ class SafeguardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SafeguardEditFormRequest $request, Safeguard $safeguard)
     {
-        //
+        $safeguard->status=$request->input('status');
+        $safeguard->user_id=Auth::user()->id;
+        $safeguard->employee_id=$request->input('employee_id');
+        $safeguard->product_id=$request->input('product_id');
+        $safeguard->save();
+        return redirect()
+        ->route('safeguard.index',['safeguard'=>$safeguard])
+        ->with('message','El resguardo ha sido actualizado con exito');
+        // dd($request->all());
     }
 
     /**
@@ -92,8 +106,19 @@ class SafeguardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Safeguard $safeguard)
     {
-        //
+        $safeguard->delete();
+        return redirect()
+        ->route('safeguard.index')
+        ->with('message-error','El registro ha sido borrado de la base de datos con exito');
+    }
+
+    public function exportarPdf()
+    {
+        // $safeguard = Safeguard::get();
+        $pdf = PDF::loadView('pdf');
+
+        return $pdf->download('archivo.pdf');
     }
 }

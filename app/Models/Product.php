@@ -14,8 +14,4 @@ class Product extends Model
     protected $fillable = [
         'serialnumber','type', 'trademark', 'so', 'model', 'status', 'ram', 'dataram', 'hdd', 'datahdd', 'description',
     ];
-    public function safeguard()
-    {
-        return $this->belongsTo('App\Models\Safeguard');
-    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductFormRequest;
+use App\Http\Requests\ProductEditFormRequest;
 
 class ProductController extends Controller
 {
@@ -60,9 +61,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        $product = Product::all();
+        return view('product.show',compact('product'));
     }
 
     /**
@@ -83,7 +85,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductFormRequest $request, Product $product)
+    public function update(ProductEditFormRequest $request, Product $product) //ProductFormRequest
     {
         $product->serialnumber=$request->input('serialnumber');
         $product->type=$request->input('type'); 
