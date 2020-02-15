@@ -120,6 +120,6 @@ class SafeguardController extends Controller
         $pdf = PDF::loadview('safeguard.pdf',['safeguard'=>$safeguard])->setPaper('a4','portrait');
 
         $filename = $safeguard->id;
-        return $pdf->stream($filename . 'vv-resguardo.pdf');
+        return $pdf->download($filename . 'vv-resguardo.pdf');
     }
 }
