@@ -8,7 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\SafeguardFormRequest;
 use App\Http\Requests\SafeguardEditFormRequest;
-use Barryvdh\DomPDF\Facade as PDF;
+use PDF;
 
 use Auth;
 
@@ -114,11 +114,12 @@ class SafeguardController extends Controller
         ->with('message-error','El registro ha sido borrado de la base de datos con exito');
     }
 
-    public function exportarPdf()
+    public function PDFgenerator($id)
     {
-        // $safeguard = Safeguard::get();
-        $pdf = PDF::loadView('pdf');
+        $safeguard = Safeguard::find($id);
+        $pdf = PDF::loadview('safeguard.pdf',['safeguard'=>$safeguard])->setPaper('a4','portrait');
 
-        return $pdf->download('archivo.pdf');
+        $filename = $safeguard->id;
+        return $pdf->stream($filename . 'vv-resguardo.pdf');
     }
 }

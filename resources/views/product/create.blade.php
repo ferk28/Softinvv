@@ -14,13 +14,23 @@
             <h4 class="mb-3">Crear Producto</h4>
             <div class="mb-3">
                 <label for="serialnumber">Codigo Serial <span class="text-muted">(Obligatorio)</span></label>
-                <input type="text" class="form-control @if($errors->has('serialnumber')) border-danger @endif" name="serialnumber" id="serialnumber" value="{{old('serialnumber')}}" placeholder="Serial">
+                <input type="text" class="form-control @if($errors->has('serialnumber')) border-danger @endif" name="serialnumber" id="serialnumber" value="{{old('serialnumber')}}" placeholder="Serial" autofocus>
                 <span class="text-danger"><small>{{$errors->first('serialnumber')}}</small></span>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="type">Tipo de producto<span class="text-muted">(Obligatorio)</span></label>
-                    <input type="text" class="form-control @if($errors->has('type')) border-danger @endif" name="type" id="type" value="{{old('type')}}" placeholder="Tipo">
+                    <label for="type">Tipo<span class="text-muted">(Obligatorio)</span></label>
+                        <select class="custom-select d-block w-100 @if($errors->has('type')) border-danger @endif" name="type" id="type">
+                            <option value="">Seleccionar...</option>
+                            <option>Laptop</option>
+                            <option>Computadora</option>
+                            <option>Smartphone</option>
+                            <option>Tableta</option>
+                            <option>TV</option>
+                            <option>No-break</option>
+                            <option>Impresora</option>
+                            <option>Otro...</option>
+                        </select>
                     <span class="text-danger"><small>{{$errors->first('type')}}</small></span>
                 </div>
                 <div class="col-md-6 mb-3">
@@ -41,7 +51,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-12 mb-3">
                     <label for="status">Estado<span class="text-muted">(Obligatorio)</span></label>
                         <select class="custom-select d-block w-100 @if($errors->has('status')) border-danger @endif" name="status" id="status">
                             <option value="">Seleccionar...</option>

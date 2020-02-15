@@ -21,8 +21,18 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="type">Tipo de producto<span class="text-muted">(Obligatorio)</span></label>
-                    <input type="text" class="form-control @if($errors->has('type')) border-danger @endif" name="type" id="type" value="{{($product->type)}}" placeholder="Tipo">
+                    <label for="type">Tipo<span class="text-muted">(Obligatorio)</span></label>
+                        <select class="custom-select d-block w-100 @if($errors->has('type')) border-danger @endif" name="type" id="type">
+                            <option value="">Seleccionar...</option>
+                            <option>Laptop</option>
+                            <option>Computadora</option>
+                            <option>Smartphone</option>
+                            <option>Tableta</option>
+                            <option>TV</option>
+                            <option>No-break</option>
+                            <option>Impresora</option>
+                            <option>Otro...</option>
+                        </select>
                     <span class="text-danger"><small>{{$errors->first('type')}}</small></span>
                 </div>
                 <div class="col-md-6 mb-3">

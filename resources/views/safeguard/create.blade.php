@@ -18,7 +18,7 @@
                         <input type="text" class="form-control  @if($errors->has('folio')) border-danger @endif" name="folio" id="folio" placeholder="Folio">
                         <span class="text-danger"><small>{{$errors->first('folio')}}</small></span>
                     </div> --}}
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-12 mb-3">
                         <label for="status">Estado</label>
                         <select class="custom-select d-block w-100  @if($errors->has('status')) border-danger @endif" name="status" id="status">
                             <option value="">Seleccionar...</option>
