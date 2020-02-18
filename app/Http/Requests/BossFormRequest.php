@@ -24,7 +24,7 @@ class BossFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_boss'=>'required|min:3|max:50',
+            'name'=>'required|min:3|max:50',
             'controlnum'=>'required|min:5|max:5',
             'status'=>'required',
             'extension'=>'required|min:4|max:4',

@@ -6,7 +6,7 @@ use App\Models\Boss;
 use App\Models\Area;
 use Illuminate\Http\Request;
 use App\Http\Requests\BossFormRequest;
-use Illuminate\Support\Facades\DB;
+use Auth;
 
 class BossController extends Controller
 {
@@ -18,13 +18,13 @@ class BossController extends Controller
     public function index()
     {
         $boss = Boss::with('area')->get();//pasa variables con id a la tabla y nombre
-        return view('boss.index',compact('boss')); 
+        return view('boss.index',compact('boss'));
 
     }
 
     /**
      * Show the form for creating a new resource.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -42,11 +42,12 @@ class BossController extends Controller
     public function store(BossFormRequest $request, Boss $boss)
     {
         $boss=new Boss;
-        $boss->name_boss=$request->input('name_boss');
+        $boss->name=$request->input('name');
         $boss->controlnum=$request->input('controlnum');
         $boss->status=$request->input('status');
         $boss->extension=$request->input('extension');
         $boss->area_id=$request->input('area_id');
+        $boss->user_id=Auth::user()->id;
         $boss->save();
         return redirect('boss')->with('message','El jefe de area ha sido agregado con exito');
         // dd($request->all());
@@ -84,11 +85,12 @@ class BossController extends Controller
      */
     public function update(BossFormRequest $request, Boss $boss)
     {
-        $boss->name_boss=$request->input('name_boss');
+        $boss->name=$request->input('name');
         $boss->controlnum=$request->input('controlnum');
         $boss->status=$request->input('status');
         $boss->extension=$request->input('extension');
         $boss->area_id=$request->input('area_id');
+        $boss->user_id=Auth::user()->id;
         $boss->save();
         return redirect()
         ->route('boss.index',['boss'=>$boss])

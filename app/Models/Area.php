@@ -12,7 +12,7 @@ class Area extends Model
      * @var array
      */
     protected $fillable = [
-        'name_area',
+        'name', 'user_id',
     ];
     // Relations one-Many etc
 }

@@ -24,7 +24,7 @@ class EmployeeFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_employee'=>'required|min:3|max:50',
+            'name'=>'required|min:3|max:50',
             'status'=>'required',
             'controlnum'=>'required|min:5|max:5',
             'boss_id'=>'required',

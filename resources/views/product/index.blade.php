@@ -26,7 +26,7 @@
         <th>Status</th>
         <th>&nbsp;</th>
     </tr>
-</thead>  
+</thead>
 <tbody>
     @foreach($product as $product)
         <tr>
@@ -35,10 +35,10 @@
             <td>{{ $product->model }}</td>
             <td>{{ $product->type }}</td>
             <td>{{ $product->status }}</td>
-            <td width=15%>       
+            <td width=15%>
                 <a href="" data-target="#btn_show-{{$product->id}}" data-toggle="modal" class="btn btn-success"><i class="fa fa-eye"></i></a>
                 <a href="{{ route('product.edit',['product'=>$product->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                <a href="" data-target="#btn-delete-{{$product->id}}" data-toggle="modal" class="btn btn-danger"><i class="fa fa-eraser"></i></a>
+                <a href="" data-target="#btn-delete-{{$product->id}}" data-toggle="modal" class="btn btn-danger"><i class="fa fa-trash-altz"></i></a>
             </td>
         </tr>
         @include('product.destroy')

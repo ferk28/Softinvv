@@ -15,12 +15,14 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name_employee');
+            $table->string('name');
             $table->integer('controlnum');
             $table->string('status');
 
             $table->unsignedInteger('boss_id');
             $table->foreign('boss_id')->references('id')->on('bosses')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

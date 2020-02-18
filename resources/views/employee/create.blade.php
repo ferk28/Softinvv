@@ -2,7 +2,7 @@
 @section('title', 'Nuevo')
 @section('content')
 {{-- send data --}}
-<form method="post" action="{{route('employee.store')}}"> 
+<form method="post" action="{{route('employee.store')}}">
     {{-- input encrypted --}}
     @csrf
     {{-- meessage success --}}
@@ -13,9 +13,9 @@
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Crear Empleado</h4>
                 <div class="mb-3">
-                    <label for="name_employee">Nombre del Empleado</label>
-                    <input type="text" class="form-control @if($errors->has('name_employee')) border-danger @endif" name="name_employee" id="name_employee" value="{{old('name_employee')}}" placeholder="Nombre empleado" autofocus>
-                    <span class="text-danger"><small>{{$errors->first('name_employee')}}</small></span>
+                    <label for="name">Nombre del Empleado</label>
+                    <input type="text" class="form-control @if($errors->has('name')) border-danger @endif" name="name" id="name" value="{{old('name')}}" placeholder="Nombre empleado" autofocus>
+                    <span class="text-danger"><small>{{$errors->first('name')}}</small></span>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-2">
@@ -39,7 +39,7 @@
                         <select class="custom-select d-block w-100 @if($errors->has('boss_id')) border-danger @endif" name="boss_id" id="boss_id">
                             <option value="">Seleccionar...</option>
                             @foreach ($boss as $boss)
-                                <option value="{{ $boss['id']}}">{{ $boss['name_boss']}}</option>
+                                <option value="{{ $boss['id']}}">{{ $boss['name']}}</option>
                             @endforeach
                         </select>
                         <span class="text-danger"><small>{{$errors->first('boss_id')}}</small></span>                    </div>
@@ -48,6 +48,6 @@
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
             </form>
         </div>
-    </div>    
+    </div>
 </form>
 @endsection

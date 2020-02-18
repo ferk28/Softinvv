@@ -12,8 +12,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Al realizar esta acción no podrás recuperar estos datos. 
-                    ¿Estás seguro que desea eliminar {{$employee->name_employee}} de la base de datos??
+                    Al realizar esta acción no podrás recuperar estos datos.
+                    ¿Estás seguro que desea eliminar {{$employee->name}} de la base de datos??
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">No estoy seguro</button>

@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductFormRequest;
 use App\Http\Requests\ProductEditFormRequest;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() 
+    public function index()
     {
         $product = Product::all();
         return view('product.index',compact('product'));
@@ -40,7 +41,7 @@ class ProductController extends Controller
     {
         $product=new Product;
         $product->serialnumber=$request->input('serialnumber');
-        $product->type=$request->input('type'); 
+        $product->type=$request->input('type');
         $product->trademark=$request->input('trademark');
         $product->model=$request->input('model');
         $product->ram=$request->input('ram');
@@ -49,7 +50,9 @@ class ProductController extends Controller
         $product->datahdd=$request->input('datahdd');
         $product->so=$request->input('so');
         $product->status=$request->input('status');
+        $product->price=$request->input('price');
         $product->description=$request->input('description');
+        $product->user_id=Auth::user()->id;
         $product->save();
         return redirect('product')->with('message','El producto ha sido agregado con exito');
         // dd($request->all());
@@ -88,7 +91,7 @@ class ProductController extends Controller
     public function update(ProductEditFormRequest $request, Product $product) //ProductFormRequest
     {
         $product->serialnumber=$request->input('serialnumber');
-        $product->type=$request->input('type'); 
+        $product->type=$request->input('type');
         $product->trademark=$request->input('trademark');
         $product->model=$request->input('model');
         $product->ram=$request->input('ram');
@@ -97,7 +100,9 @@ class ProductController extends Controller
         $product->datahdd=$request->input('datahdd');
         $product->so=$request->input('so');
         $product->status=$request->input('status');
+        $product->price=$request->input('price');
         $product->description=$request->input('description');
+        $product->user_id=Auth::user()->id;
         $product->save();
         return redirect()
         ->route('product.index',['product'=>$product])

@@ -2,7 +2,7 @@
 @section('title', 'Nuevo')
 @section('content')
 {{-- references to controller@area update --}}
-<form method="post" action="{{route('area.update',['area'=>$area])}}"> 
+<form method="post" action="{{route('area.update',['area'=>$area])}}">
     {{-- meessage success --}}
     @if(session('message'))
         <div class="alert alert-success">{{session('message')}}</div>
@@ -15,9 +15,9 @@
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Editar Area</h4>
             <div class="mb-3">
-                <label for="name_area">Descripcion</label>
-                <input type="text" class="form-control @if($errors->has('name_area')) border-danger @endif" name="name_area" id="name_area" value="{{($area->name_area)}}" placeholder="Nombre" autofocus>
-                <span class="text-danger"><small>{{ $errors->first('name_area')}}</small></span>
+                <label for="name">Descripcion</label>
+                <input type="text" class="form-control @if($errors->has('name')) border-danger @endif" name="name" id="name" value="{{($area->name)}}" placeholder="Nombre" autofocus>
+                <span class="text-danger"><small>{{ $errors->first('name')}}</small></span>
             </div>
             <hr class="mb-4">
             <button type="submit" class="btn btn-primary btn-lg btn-block">Editar</button>
@@ -26,4 +26,3 @@
     </div>
 </form>
 @endsection
-  

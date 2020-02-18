@@ -29,6 +29,7 @@ class ProductFormRequest extends FormRequest
             'trademark'=>'required|min:1|max:25',
             'model'=>'required',
             'status'=>'required',
+            'price'=>'required|numeric',
         ];
     }
     public function messages(){

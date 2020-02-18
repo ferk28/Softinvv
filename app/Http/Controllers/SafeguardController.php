@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\SafeguardFormRequest;
 use App\Http\Requests\SafeguardEditFormRequest;
 use PDF;
-
 use Auth;
 
 
@@ -119,7 +118,7 @@ class SafeguardController extends Controller
         $safeguard = Safeguard::find($id);
         $pdf = PDF::loadview('safeguard.pdf',['safeguard'=>$safeguard])->setPaper('a4','portrait');
 
-        $filename = $safeguard->id;
-        return $pdf->download($filename . 'vv-resguardo.pdf');
+        $filename = $safeguard->employee->name;
+        return $pdf->download($filename . '-vv-resguardo.pdf');
     }
 }

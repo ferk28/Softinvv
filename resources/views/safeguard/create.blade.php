@@ -2,7 +2,7 @@
 @section('title', 'Nuevo')
 @section('content')
 {{-- send data --}}
-<form method="post" action="{{route('safeguard.store')}}"> 
+<form method="post" action="{{route('safeguard.store')}}">
     {{-- input encrypted --}}
     @csrf
     {{-- message success --}}
@@ -34,7 +34,7 @@
                         <select class="custom-select d-block w-100  @if($errors->has('employee_id')) border-danger @endif" name="employee_id" id="employee_id">
                             <option value="">Seleccionar...</option>
                             @foreach ($employee as $employee)
-                        <option value="{{ $employee['id']}}">{{$employee['name_employee']}}</option>                                
+                        <option value="{{ $employee['id']}}">{{$employee['name']}}</option>
                             @endforeach
                         </select>
                         <span class="text-danger"><small>{{$errors->first('employee_id')}}</small></span>

@@ -2,9 +2,9 @@
 @section('title', 'Nuevo')
 @section('content')
 {{-- send data --}}
-<form method="post" action="{{route('product.store')}}"> 
+<form method="post" action="{{route('product.store')}}">
     {{-- input encrypted --}}
-    @csrf 
+    @csrf
     {{-- meessage success --}}
     @if(session('message'))
     <div class="alert alert-success">{{session('message')}}</div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="status">Estado<span class="text-muted">(Obligatorio)</span></label>
                         <select class="custom-select d-block w-100 @if($errors->has('status')) border-danger @endif" name="status" id="status">
                             <option value="">Seleccionar...</option>
@@ -59,6 +59,11 @@
                             <option>Baja</option>
                         </select>
                     <span class="text-danger"><small>{{$errors->first('status')}}</small></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="price">Precio<span class="text-muted">(Obligatorio)</span></label>
+                    <input type="number" class="form-control @if($errors->has('price')) border-danger @endif" name="price" id="price" value="{{old('price')}}" placeholder="Precio aproximado">
+                    <span class="text-danger"><small>{{$errors->first('price')}}</small></span>
                 </div>
             </div>
             <div class="row">

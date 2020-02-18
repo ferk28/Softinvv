@@ -7,6 +7,7 @@ use App\Models\Boss;
 use Illuminate\Http\Request;
 use App\Http\Requests\EmployeeFormRequest;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class EmployeeController extends Controller
 {
@@ -41,10 +42,11 @@ class EmployeeController extends Controller
     public function store(EmployeeFormRequest $request)
     {
         $employee=new Employee;
-        $employee->name_employee=$request->input('name_employee'); 
+        $employee->name=$request->input('name');
         $employee->controlnum=$request->input('controlnum');
         $employee->status=$request->input('status');
         $employee->boss_id=$request->input('boss_id');
+        $employee->user_id=Auth::user()->id;
         $employee->save();
         return redirect('employee')->with('message','El empleado ha sido agregado con exito');
         // dd($request->all());
@@ -82,10 +84,11 @@ class EmployeeController extends Controller
      */
     public function update(EmployeeFormRequest $request, Employee $employee)
     {
-        $employee->name_employee=$request->input('name_employee'); 
+        $employee->name=$request->input('name');
         $employee->controlnum=$request->input('controlnum');
         $employee->status=$request->input('status');
         $employee->boss_id=$request->input('boss_id');
+        $employee->user_id=Auth::user()->id;
         $employee->save();
         return redirect()
         ->route('employee.index',['employee'=>$employee])

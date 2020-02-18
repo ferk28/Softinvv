@@ -20,12 +20,12 @@
             <th>Nombre</th>
             <th>&nbsp;</th>
         </tr>
-    </thead>  
+    </thead>
     <tbody>
         @foreach($area as $area)
             <tr>
-                <td>{{ $area->name_area }}</td>
-                <td width=12%>       
+                <td>{{ $area->name }}</td>
+                <td width=12%>
                     <a href="{{ route('area.edit',['area'=>$area->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                     <a href="" data-target="#btn-delete-{{$area->id}}" data-toggle="modal" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
                 </td>

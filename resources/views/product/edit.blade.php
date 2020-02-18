@@ -2,7 +2,7 @@
 @section('title', 'Nuevo')
 @section('content')
 {{-- send data --}}
-<form method="post" action="{{route('product.update',['product'=>$product])}}"> 
+<form method="post" action="{{route('product.update',['product'=>$product])}}">
     {{-- meessage success --}}
     @if(session('message'))
         <div class="alert alert-success">{{session('message')}}</div>
@@ -10,7 +10,7 @@
     {{-- end message succes --}}
     {{-- input encrypted --}}
     @method('PUT')
-    @csrf 
+    @csrf
     <div class="row justify-content-center">
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Crear Producto</h4>
@@ -61,6 +61,11 @@
                             <option>Baja</option>
                         </select>
                     <span class="text-danger"><small>{{$errors->first('status')}}</small></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="price">Precio<span class="text-muted">(Obligatorio)</span></label>
+                    <input type="number" class="form-control @if($errors->has('price')) border-danger @endif" name="price" id="price" value="{{($product->price)}}" placeholder="Precio aproximado">
+                    <span class="text-danger"><small>{{$errors->first('price')}}</small></span>
                 </div>
             </div>
             <div class="row">

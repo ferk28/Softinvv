@@ -21,11 +21,15 @@ class CreateProductsTable extends Migration
             $table->string('so')->nullable();
             $table->string('model');
             $table->string('status');
+            $table->integer('price');
             $table->integer('ram')->nullable();
             $table->string('dataram')->nullable();
             $table->integer('hdd')->nullable();
             $table->string('datahdd')->nullable();
             $table->text('description')->nullable();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

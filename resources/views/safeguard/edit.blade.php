@@ -2,7 +2,7 @@
 @section('title', 'Nuevo')
 @section('content')
 {{-- send data --}}
-<form method="post" action="{{route('safeguard.update',['safeguard'=>$safeguard])}}"> 
+<form method="post" action="{{route('safeguard.update',['safeguard'=>$safeguard])}}">
     {{-- meessage success --}}
     @if(session('message'))
         <div class="alert alert-success">{{session('message')}}</div>
@@ -29,7 +29,7 @@
                     <select class="custom-select d-block w-100  @if($errors->has('employee_id')) border-danger @endif" name="employee_id" id="employee_id">
                         <option value="">Seleccionar...</option>
                         @foreach ($employee as $employees)
-                    <option value="{{ $employees['id']}}">{{$employees['name_employee']}}</option>                                
+                    <option value="{{ $employees['id']}}">{{$employees['name']}}</option>
                         @endforeach
                     </select>
                     <span class="text-danger"><small>{{$errors->first('employee_id')}}</small></span>

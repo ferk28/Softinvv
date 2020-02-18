@@ -163,7 +163,8 @@ return [
         'product_id' => 'producto',
         'name_area' => 'nombre',
         'name_boss' => 'nombre',
-        'name_employee' => 'nombre'
+        'name_employee' => 'nombre',
+        'price' => 'precio',
     ],
 
 ];

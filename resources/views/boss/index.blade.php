@@ -26,16 +26,16 @@
             <th>Status</th>
             <th>&nbsp;</th>
         </tr>
-    </thead>  
+    </thead>
     <tbody>
         @foreach($boss as $boss)
             <tr>
-                <td>{{ $boss->name_boss }}</td>
-                <td>{{ $boss->area->name_area }}</td>
+                <td>{{ $boss->name }}</td>
+                <td>{{ $boss->area->name }}</td>
                 <td>{{ $boss->controlnum }}</td>
                 <td>{{ $boss->extension }}</td>
                 <td>{{ $boss->status }}</td>
-                <td width=12%>       
+                <td width=12%>
                     <a href="{{ route('boss.edit',['boss'=>$boss->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                     <a href="" data-target="#btn-delete-{{$boss->id}}" data-toggle="modal" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
                 </td>

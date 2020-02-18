@@ -36,9 +36,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="type">Estado</label>
                             <input type="text" class="form-control" name="type" id="type" value="{{$product->status}}" readonly>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="price">Precio</label>
+                            <input type="text" class="form-control" name="price" id="price" value="{{$product->price}}" readonly>
                         </div>
                     </div>
                     <div class="row">
@@ -47,7 +51,7 @@
                             <input type="text" class="form-control" name="type" id="type" value="{{$product->ram}}" readonly>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="trademark">Dato</label>
+                            <label for="trademark">Dato RAM</label>
                             <input type="text" class="form-control" name="trademark" id="trademark" value="{{$product->dataram}}" readonly>
                         </div>
                     </div>
@@ -57,7 +61,7 @@
                             <input type="text" class="form-control" name="type" id="type" value="{{$product->hdd}}" readonly>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="trademark">Dato</label>
+                            <label for="trademark">Dato HDD</label>
                             <input type="text" class="form-control" name="trademark" id="trademark" value="{{$product->datahdd}}" readonly>
                         </div>
                     </div>
@@ -69,9 +73,9 @@
                     </div>
                 </div>
             </div>
-        <div class="modal-footer">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-        </div>
+            </div>
       </div>
     </div>
   </div>

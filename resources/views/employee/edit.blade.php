@@ -2,7 +2,7 @@
 @section('title', 'Nuevo')
 @section('content')
 {{-- send data --}}
-<form method="post" action="{{route('employee.update',['employee'=>$employee])}}"> 
+<form method="post" action="{{route('employee.update',['employee'=>$employee])}}">
     {{-- meessage success --}}
     @if(session('message'))
         <div class="alert alert-success">{{session('message')}}</div>
@@ -13,9 +13,9 @@
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Editar Empleado</h4>
                 <div class="mb-3">
-                    <label for="name_employee">Nombre del Empleado</label>
-                    <input type="text" class="form-control @if($errors->has('name_employee')) border-danger @endif" name="name_employee" id="name_employee" value="{{($employee->name_employee)}}" placeholder="Nombre empleado" autofocus>
-                    <span class="text-danger"><small>{{$errors->first('name_employee')}}</small></span>
+                    <label for="name">Nombre del Empleado</label>
+                    <input type="text" class="form-control @if($errors->has('name')) border-danger @endif" name="name" id="name" value="{{($employee->name)}}" placeholder="Nombre empleado" autofocus>
+                    <span class="text-danger"><small>{{$errors->first('name')}}</small></span>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-2">
@@ -39,10 +39,10 @@
                         <select class="custom-select d-block w-100 @if($errors->has('boss_id')) border-danger @endif" name="boss_id" id="boss_id">
                             <option value="">Seleccionar...</option>
                             @foreach ($bosses as $boss)
-                                <option value="{{ $boss['id']}}">{{ $boss['name_boss']}}</option>
+                                <option value="{{ $boss['id']}}">{{ $boss['name']}}</option>
                             @endforeach
                         </select>
-                        <span class="text-danger"><small>{{$errors->first('boss_id')}}</small></span>                    
+                        <span class="text-danger"><small>{{$errors->first('boss_id')}}</small></span>
                     </div>
                 </div>
                 <hr class="mb-4">
@@ -50,6 +50,6 @@
                 <a class="btn btn-secondary btn-block" href="javascript:history.back()">Volver atras</a>
             </form>
         </div>
-    </div>    
+    </div>
 </form>
 @endsection

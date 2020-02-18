@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Area;
 use Illuminate\Http\Request;
 use App\Http\Requests\AreaFormRequest;
+use Auth;
 
 class AreaController extends Controller
 {
@@ -38,7 +39,8 @@ class AreaController extends Controller
     public function store(AreaFormRequest $request)
     {
         $area=new Area;
-        $area->name_area=$request->input('name_area');
+        $area->name=$request->input('name');
+        $area->user_id=Auth::user()->id;
         $area->save();
         return redirect('area')->with('message','El area ha sido agregada con exito');
     }
@@ -74,7 +76,8 @@ class AreaController extends Controller
      */
     public function update(AreaFormRequest $request, Area $area)
     {
-        $area->name_area=$request->input('name_area');
+        $area->name=$request->input('name');
+        $area->user_id=Auth::user()->id;
         $area->save();
         return redirect()
             ->route('area.index', ['area' => $area])
@@ -87,8 +90,8 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Area $area) 
-    { 
+    public function destroy(Area $area)
+    {
         $area->delete();
         return redirect()
         ->route('area.index')
