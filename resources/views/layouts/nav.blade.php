@@ -22,7 +22,7 @@
                               document.getElementById('logout-form').submit();">
                  {{ __('Logout') }}
              </a>
-             
+
              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
@@ -91,28 +91,20 @@
                             <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('product.create')}}">Crear</a><a class="nav-link" href="{{ route('product.index')}}">Consultar</a></nav>
                             </div>
 
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseSafeguard" aria-expanded="false" aria-controls="pagesCollapseSafeguard"
-                                >Resguardos
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                            ></a>
-                            <div class="collapse" id="pagesCollapseSafeguard" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('safeguard.create')}}">Crear</a><a class="nav-link" href="{{ route('safeguard.index')}}">Consultar</a></nav>
-                            </div>
-                            
                         </nav>
                     </div>
 {{-- layout 2 end --}}
-                    <div class="sb-sidenav-menu-heading">Addons</div>
-                    <a class="nav-link" href="charts.html"
+                    <div class="sb-sidenav-menu-heading">Resguardos</div>
+                    <a class="nav-link" href="{{route('safeguard.create')}}"
                         ><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Reportes</a
-                    ><a class="nav-link" href="tables.html"
+                        Reportar resguardo</a
+                    ><a class="nav-link" href="{{ route('safeguard.index')}}"
                         ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Control usuarios</a>
-                </div>
+                        Control resguardos</a>
+                    </div>
             </div>
             <div class="sb-sidenav-footer">
-                <div class="small">Usuario actual:</div>                
+                <div class="small">Usuario actual:</div>
                 <a>
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
