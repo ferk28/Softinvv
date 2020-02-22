@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes(['verify'=>'true']);
+Auth::routes(['verify'=>'false']);
 Route::group(['middleware' => ['verified']], function () {
     Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
     Route::resource('/area', 'AreaController')->middleware('auth','language');
