@@ -43,8 +43,8 @@
                         <label for="area_id">Area</label>
                         <select class="custom-select d-block w-100 @if($errors->has('area_id')) border-danger @endif" name="area_id" id="area_id">
                             <option value="">Seleccionar...</option>
-                            @foreach ($area as $area)
-                                <option value="{{ $area['id']}}">{{ $area['name']}}</option>
+                            @foreach ($area as $areas)
+                                <option value="{{ $areas['id']}}">{{ $areas['name']}}</option>
                             @endforeach
                         </select>
                         <span class="text-danger"><small>{{$errors->first('area_id')}}</small></span>
