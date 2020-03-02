@@ -13,7 +13,7 @@
     @csrf
     <div class="row justify-content-center">
         <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">Crear Producto</h4>
+            <h4 class="mb-3">Editar Producto</h4>
             <div class="mb-3">
                 <label for="serialnumber">Codigo Serial <span class="text-muted">(Obligatorio)</span></label>
                 <input type="text" class="form-control @if($errors->has('serialnumber')) border-danger @endif" name="serialnumber" id="serialnumber" value="{{($product->serialnumber)}}" placeholder="Serial" autofocus>
